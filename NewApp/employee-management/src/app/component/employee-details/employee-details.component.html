@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-3">
+        <img [src]="employee.avatar" /><br/>
+    </div>
+    <div class="col-9">
+        <h2>User Name for {{user}} is: {{employee.name}}</h2>
+        <h3>User Id: {{employee.id}}</h3>
+        <h3>User Create At {{employee.createdAt}}</h3>
+        <input type="button" value="Delete Employee" (click)="deleteEmployee(employee.id)" />
+        <input *delayRendering="5000" type="button" value="Notify Employee" (click)="notifyEmployee(employee.id)" />
+        <input type="text" [(ngModel)]="user" />
+    </div>
+</div>

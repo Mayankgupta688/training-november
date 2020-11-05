@@ -1,0 +1,16 @@
+<div>
+    Enter User Name: <input type="text" [ngModel]="userName" (ngModelChange)="updateData($event)"  /><br/>
+    <b>User Name entered is {{userName}}</b><br/>
+    <input type="button" value="Get Data" (click)="getData()" />
+    <input type="button" value="Set Data" (click)="setData()" />
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-sm-12 col-xs-12">
+                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/alexandermayes/128.jpg" />
+            </div>
+            <div class="col-lg-9 col-sm-12 col-xs-12">Uaer Name is Mayank</div>
+        </div>
+    </div>
+</div>

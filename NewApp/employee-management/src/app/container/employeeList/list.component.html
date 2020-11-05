@@ -1,16 +1,16 @@
 <div id="main-container">
-    <h1>Employee List:</h1>
-    <div *delayRendering>
-        <h2>This is Delayed Content</h2>
-    </div>
-    <div *ngFor="let employee of userList">
-        <h1>User Name {{employee.name}}</h1>
-        <h3>User Id: {{employee.id}}</h3>
-        <h3>User Create At {{employee.createdAt}}</h3>
-        <img [src]="employee.avatar" /><br/>
-        <div>
-            <input type="button" value="Delete Employee" (click)="deleteUser(employee.id)" />
-        </div><hr/>
-        
+    <h1>Employee List:</h1><hr/>
+    <input type="text" [(ngModel)]="userName" />
+    <input type="button" (click)="notifyChildElemnt()" value="Event Emission" />
+    <div class="container-fluid" *delayRendering="1000">
+        <div *ngFor="let emp of userList">
+            <app-employee-details 
+                [user]="userName" 
+                [employee]="emp" 
+                [notifyChild]="notifyChild"
+                (notify)="deleteEmployeeFromParent($event)"
+                (notifyUserClicked)="notifyUser($event)">
+            </app-employee-details>
+        </div>
     </div>  
 </div>     

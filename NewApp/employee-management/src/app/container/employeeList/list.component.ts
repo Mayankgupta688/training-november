@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter } from "@angular/core";
+import { EmployeeDataService } from '../../services/employee.service';
 import IEmployee from "../../Interfaces/IEmployee";
-import * as employeeList from "../../data/employeeList.json";
 
 @Component({
     selector: "employee-list",
@@ -8,37 +8,35 @@ import * as employeeList from "../../data/employeeList.json";
     styleUrls: ["./styles/list.component.css"]
 })
 export default class EmployeeListComponent { 
-    userList: IEmployee[] = []
+    userList: IEmployee[] = [];
+    userName: string = "Mayank";
+    notifyChild: EventEmitter<string>;
 
-    constructor() {
-        this.userList = employeeList["default"];
+    constructor(private _employeeService: EmployeeDataService) {
+        debugger;
+        this.notifyChild = new EventEmitter<string>();
+        this.userList = this._employeeService.getEmployeeData();
+
+        this.notifyChild.subscribe((data) => {
+            alert(data)
+        })
     }
-    
-    deleteUser(userId) {
+
+    changeName() {
+        this.userName = "Anshul";
+    }
+
+    notifyChildElemnt() {
+        this.notifyChild.emit("Child Notified")
+    }
+
+    deleteEmployeeFromParent(employeeId) {
         this.userList = this.userList.filter((employee) => {
-            return employee.id != userId
-        });
+            return employee.id != employeeId;
+        })
     }
 
-    updateName() {
-        this.buttonText = "Updated Button Text";
-    }
-
-    getButtonName() {
-        return this.buttonText;
-    }
-
-    showDetails() {
-        debugger;
-        return true;
-    }
-
-    buttonText = "Click To Get Data";
-    showDeleteButton: boolean = true;
-    showEmployee: boolean = true;
-
-    alertUserData(data) {
-        debugger;
-        alert("This is Event");
+    notifyUser(employeeId) {
+        alert("Notify data from Parent Component " + employeeId)
     }
 }

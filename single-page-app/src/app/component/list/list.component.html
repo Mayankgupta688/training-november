@@ -1,0 +1,15 @@
+<h1>Employee List</h1>
+
+<a [routerLink]='["/details"]'>Move to Details</a><br/><br/>
+
+<div class="container-fluid">
+    <div *ngFor="let emp of empList">
+        <div>
+            <b>User Name {{emp.name  | changedata | uppercase}}</b><br/><br/>
+            <b>{{emp.id | currency: "INR"}}</b><br/><br/>
+            <input type="button" value="Redirect For Details" (click)="redirectToDetails(emp.id)" />
+            <input type="button" value="Delete" (click)="deleteEmployee(emp.id)" />
+            <hr/>
+        </div>
+    </div>
+</div>  

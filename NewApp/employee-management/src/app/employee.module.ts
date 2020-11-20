@@ -7,6 +7,8 @@ import { EmployeeFormComponent } from './container/employee-form/employee-form.c
 import { EditEmployeeComponent } from './component/edit-employee/edit-employee.component';
 import { FormsModule } from "@angular/forms";
 import { EmployeeDetailsComponent } from './component/employee-details/employee-details.component';
+
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
     declarations: [
         EmployeeListComponent, 
@@ -17,7 +19,8 @@ import { EmployeeDetailsComponent } from './component/employee-details/employee-
     ],
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ], bootstrap: [EmployeeListComponent, EmployeeFormComponent]
 })
 export class EmployeeModule {}

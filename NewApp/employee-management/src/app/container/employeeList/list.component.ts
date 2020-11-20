@@ -13,9 +13,15 @@ export default class EmployeeListComponent {
     notifyChild: EventEmitter<string>;
 
     constructor(private _employeeService: EmployeeDataService) {
-        debugger;
         this.notifyChild = new EventEmitter<string>();
-        this.userList = this._employeeService.getEmployeeData();
+        debugger
+
+        this._employeeService.addNewData().subscribe(() => {
+            this._employeeService.getEmployeeData().subscribe((data) => {
+                this.userList = data;
+            });
+        })
+        
 
         this.notifyChild.subscribe((data) => {
             alert(data)

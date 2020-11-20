@@ -10,7 +10,6 @@ import { EmployeeDataService } from '../../services/employee.service';
 export class EmployeeFormComponent {
 
   constructor(private _employeeDataService: EmployeeDataService) {
-    debugger
     console.log(this._employeeDataService.randomUserData)
   }
   
